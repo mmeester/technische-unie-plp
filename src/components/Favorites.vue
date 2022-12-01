@@ -4,14 +4,8 @@
   import { getProducts } from '../services/product';
   import ProductList from './ProductList.vue';
 
-  interface Product {
-    id: number;
-    name: string;
-    description: string;
-    image: string;
-    price: number;
-  }
-
+  import type { Product } from '../interfaces/Product';
+  
   const favoritesStorage = localStorage.getItem('favorites');
   const favorites = favoritesStorage ? JSON.parse(favoritesStorage) : [];
 
