@@ -1,21 +1,18 @@
 <script setup lang="ts">
+  import type { Product } from '@/interfaces/Product';
   import ProductItem from './ProductItem.vue';
+    
+  interface Props {
+    products: Product[];
+  }
 
-  const props = defineProps<{
-    products: {
-      id: number;
-      name: string;
-      description: string;
-      image: string;
-      price: number;
-    }[]
-  }>();
+  defineProps<Props>();
 </script>
 
 <template>
   <ul class="product-list">
-    <li v-for="{ id, name, description, image, price } in props.products" :key="id">
-      <ProductItem :id="id" :name="name" :description="description" :image="image" :price="price" />
+    <li v-for="product in products" :key="id">
+      <ProductItem :product="product" />
     </li>
   </ul>
 </template>

@@ -1,25 +1,24 @@
 <script setup lang="ts">
+  import type { Product } from '../interfaces/Product';
   import FavoriteButton from './FavoriteButton.vue';
-
-  const props = defineProps<{
-    id: number;
-    name: string;
-    description: string;
-    image: string;
-    price: number;
-  }>();
+  
+  interface Props {
+    product: Product;
+  }
+  
+  defineProps<Props>();
 </script>
 
 <template>
   <div class="product-item">
-    <img class="product-item__image" :src="props.image">
+    <img class="product-item__image" :src="product.image">
     <div class="product-item__content">
-      <h4 class="product-item__name">{{ props.name }}</h4>
-      <p class="product-item__description">{{ props.description }}</p>
+      <h4 class="product-item__name">{{ product.name }}</h4>
+      <p class="product-item__description">{{ product.description }}</p>
     </div>
     <div class="product-item__actions">
-      <p class="product-item__price"><span>{{ props.price }}</span> netto</p>
-      <FavoriteButton :id="props.id" />
+      <p class="product-item__price"><span>{{product.price }}</span> netto</p>
+      <FavoriteButton :id="product.id" />
     </div>
   </div>
 </template>
